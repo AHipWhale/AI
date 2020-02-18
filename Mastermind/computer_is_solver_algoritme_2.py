@@ -49,52 +49,17 @@ for plays in range(50):
 
     def graph(all_pos1, all_pos2):
         maximum = {}
+        antwoord = [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (1, 0), (1, 1), (1, 2), (1, 3), (2, 0), (2, 1), (2, 2), (3, 0), (4, 0)]
         for i in all_pos2:
-            nul_nul = 0
-            nul_een = 0
-            nul_twee = 0
-            nul_drie = 0
-            nul_vier = 0
-            een_nul = 0
-            een_een = 0
-            een_twee = 0
-            een_drie = 0
-            twee_nul = 0
-            twee_een = 0
-            twee_twee = 0
-            drie_nul = 0
-            vier_nul = 0
+            terug = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             for j in all_pos1:
-                if feedback(i, j) == [0, 0]:
-                    nul_nul += 1
-                if feedback(i, j) == [0, 1]:
-                    nul_een += 1
-                if feedback(i, j) == [0, 2]:
-                    nul_twee += 1
-                if feedback(i, j) == [0, 3]:
-                    nul_drie += 1
-                if feedback(i, j) == [0, 4]:
-                    nul_vier += 1
-                if feedback(i, j) == [1, 0]:
-                    een_nul += 1
-                if feedback(i, j) == [1, 1]:
-                    een_een += 1
-                if feedback(i, j) == [1, 2]:
-                    een_twee += 1
-                if feedback(i, j) == [1, 3]:
-                    een_drie += 1
-                if feedback(i, j) == [2, 0]:
-                    twee_nul += 1
-                if feedback(i, j) == [2, 1]:
-                    twee_een += 1
-                if feedback(i, j) == [2, 2]:
-                    twee_twee += 1
-                if feedback(i, j) == [3, 0]:
-                    drie_nul += 1
-                if feedback(i, j) == [4, 0]:
-                    vier_nul += 1
+                x = feedback(i, j)
+                for code in range(len(terug)
+                if x == antwoord[code]:
+                    terug[code] += 1
+                                  
             #temp_lijst = [str(i), nul_nul, nul_een, nul_twee, nul_drie, nul_vier, een_nul, een_een, een_twee, een_drie, twee_nul, twee_een, twee_twee, drie_nul, vier_nul]
-            update = {tuple(i) : max(nul_nul, nul_een, nul_twee, nul_drie, nul_vier, een_nul, een_een, een_twee, een_drie, twee_nul, twee_een, twee_twee, drie_nul, vier_nul)}
+            update = {tuple(i) : max(terug)}
             maximum.update(update)
         next_guess = list(min(maximum, key=maximum.get))
         return next_guess
